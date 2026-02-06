@@ -2,7 +2,7 @@
 
 Requires at least: 5.8
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -28,6 +28,9 @@ Used under GNU GPL v3.
 2. Activate. Configure under Tools → Piratez Cookie Consent.
 
 == Changelog ==
+
+= 1.0.1 =
+* Popup: client-side cookie check so consent popup does not reappear on cached front page (nginx/Redis). Auto-show only when `pcc_popup_shown` cookie is absent in browser.
 
 = 1.0.0 =
 * Initial release.

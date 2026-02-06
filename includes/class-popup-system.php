@@ -85,6 +85,15 @@ class Piratez_CC_Popup_System {
 (function(w,d){
   'use strict';
   var c=w.pccPopupConfig||{}, popup=null, closeBtn=null, firstFocus=null, lastFocus=null;
+  function hasShownCookie(){
+    var name=c.cookieName||'pcc_popup_shown';
+    var parts=d.cookie.split(';');
+    for(var i=0;i<parts.length;i++){
+      var p=parts[i].replace(/^\s+|\s+$/g,'');
+      if(p.indexOf(name+'=')===0) return true;
+    }
+    return false;
+  }
   function setCookie(){
     var days=c.cookieDuration||7, date=new Date();
     date.setTime(date.getTime()+days*24*60*60*1000);
@@ -133,7 +142,7 @@ class Piratez_CC_Popup_System {
     closeBtn=popup.querySelector('.pcc-popup__close');
     var trigger=d.getElementById('pcc-settings-trigger');
     if(trigger) trigger.addEventListener('click',function(e){ e.preventDefault(); showPopup(); });
-    if(c.autoShow) setTimeout(showPopup,500);
+    if(c.autoShow&&!hasShownCookie()) setTimeout(showPopup,500);
     if(closeBtn) closeBtn.addEventListener('click',function(e){ e.preventDefault(); closePopup(); });
     popup.addEventListener('click',function(e){ var b=e.target.closest('[data-pcc-action]'); if(b){ e.preventDefault(); handleAction(b.getAttribute('data-pcc-action')); } });
     d.addEventListener('keydown',keydown);

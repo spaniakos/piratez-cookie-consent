@@ -3,7 +3,7 @@
  * Plugin Name: Piratez Cookie Consent
  * Plugin URI: https://github.com/spaniakos/piratez-cookie-consent
  * Description: Google Consent Mode v2 cookie consent. Default denied in head, runtime update, floating popup with re-open control.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Requires at least: 5.8
  * Requires PHP: 7.4
  * Author: Spaniakos
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PIRATEZ_CC_VERSION', '1.0.0' );
+define( 'PIRATEZ_CC_VERSION', '1.0.1' );
 define( 'PIRATEZ_CC_PLUGIN_FILE', __FILE__ );
 define( 'PIRATEZ_CC_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PIRATEZ_CC_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
