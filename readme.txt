@@ -2,7 +2,7 @@
 
 Requires at least: 5.8
 Requires PHP: 7.4
-Stable tag: 1.0.1
+Stable tag: 1.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -29,8 +29,14 @@ Used under GNU GPL v3.
 
 == Changelog ==
 
+= 1.1.0 =
+* GitHub release packages with verified native WordPress updates.
+* Independent update checks with version, compatibility and checksum validation.
+
+
 = 1.0.1 =
 * Popup: client-side cookie check so consent popup does not reappear on cached front page (nginx/Redis). Auto-show only when `pcc_popup_shown` cookie is absent in browser.
 
 = 1.0.0 =
 * Initial release.
+

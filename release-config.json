@@ -1,0 +1,16 @@
+{
+  "type": "plugin",
+  "slug": "piratez-cookie-consent",
+  "repo": "spaniakos/piratez-cookie-consent",
+  "entry": "piratez-cookie-consent.php",
+  "version_constant": "PIRATEZ_CC_VERSION",
+  "tested": "7.1.3",
+  "runtime": [
+    "piratez-cookie-consent.php",
+    "readme.txt",
+    "LICENSE",
+    "admin",
+    "assets",
+    "includes"
+  ]
+}
