@@ -1,6 +1,6 @@
 <?php
 /**
- * Admin: Tools menu, settings page. No shortcodes.
+ * Admin: PirateZ menu, settings page. No shortcodes.
  *
  * @package Piratez_Cookie_Consent
  */
@@ -9,9 +9,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+require_once dirname(__DIR__) . '/includes/admin-menu.php';
+
 class Piratez_CC_Admin {
 
 	private static $instance = null;
+	private $page_hook = '';
 	const OPTION_NAME = 'piratez_cc_settings';
 	const OPTION_GROUP = 'piratez_cc_settings_group';
 	const PAGE_SLUG    = 'piratez-cookie-consent';
@@ -29,7 +32,7 @@ class Piratez_CC_Admin {
 
 	private function init_hooks() {
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
-		add_action( 'admin_menu', array( $this, 'add_menu' ) );
+		add_action( 'admin_menu', array( $this, 'add_menu' ), 20 );
 		add_filter( 'plugin_action_links_' . PIRATEZ_CC_PLUGIN_BASENAME, array( $this, 'add_settings_link' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
 	}
@@ -85,22 +88,24 @@ class Piratez_CC_Admin {
 	}
 
 	public function add_menu() {
-		add_management_page(
-			__( 'Piratez Cookie Consent', 'piratez-cookie-consent' ),
-			__( 'Piratez Cookie Consent', 'piratez-cookie-consent' ),
+		$this->page_hook = add_submenu_page(
+            \PirateZ\AdminMenu::SLUG,
+			__( 'PirateZ Cookie Consent', 'piratez-cookie-consent' ),
+			__( 'Cookie Consent', 'piratez-cookie-consent' ),
 			'manage_options',
 			self::PAGE_SLUG,
 			array( $this, 'render_settings_page' )
 		);
+        \PirateZ\AdminMenu::redirect_legacy(self::PAGE_SLUG);
 	}
 
 	public function add_settings_link( $links ) {
-		$links[] = '<a href="' . esc_url( admin_url( 'tools.php?page=' . self::PAGE_SLUG ) ) . '">' . esc_html__( 'Settings', 'piratez-cookie-consent' ) . '</a>';
+		$links[] = '<a href="' . esc_url( admin_url( 'admin.php?page=' . self::PAGE_SLUG ) ) . '">' . esc_html__( 'Settings', 'piratez-cookie-consent' ) . '</a>';
 		return $links;
 	}
 
 	public function enqueue_admin_assets( $hook ) {
-		if ( 'tools_page_' . self::PAGE_SLUG !== $hook ) {
+		if ( $this->page_hook !== $hook ) {
 			return;
 		}
 		wp_enqueue_style( 'wp-color-picker' );
