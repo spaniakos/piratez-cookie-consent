@@ -1,8 +1,9 @@
 === Piratez Cookie Consent ===
 
 Requires at least: 5.8
+Tested up to: 7.1.3
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -25,9 +26,14 @@ Used under GNU GPL v3.
 == Installation ==
 
 1. Upload to wp-content/plugins/piratez-cookie-consent/
-2. Activate. Configure under Tools → Piratez Cookie Consent.
+2. Activate. Configure under PirateZ → Cookie Consent.
 
 == Changelog ==
+
+= 1.2.0 =
+* Share one PirateZ menu with other addons, independently of Manager or theme.
+* Redirect old Tools bookmarks and preserve settings and independent GitHub updates.
+
 
 = 1.1.0 =
 * GitHub release packages with verified native WordPress updates.
